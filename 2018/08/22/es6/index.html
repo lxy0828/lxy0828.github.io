@@ -1,0 +1,403 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>ES6语法（一） | Hexo</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="ES6语法（一）">
+            
+	            ES6语法（一）
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/08/22</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><em>对于ES6中的一些基础语法，包括对数组/对象/函数/字符串的操作，chroem已经支持了这些语法</em><br><code></code></p>
+<pre><code>{
+    console.log(Number.isFinite(15))
+    console.log(Number.isFinite(NaN))
+    console.log(Number.isFinite(&apos;true&apos;/0))
+    console.log(&apos;NaN&apos;,Number.isNaN(NaN))
+}
+
+{
+    console.log(4.1,Math.trunc(4.1)) //4
+    console.log(4.9,Math.trunc(4.9)) //4
+}
+{
+    console.log(&apos;-5&apos;,Math.sign(-5)) //-1
+    console.log(&apos;0&apos;,Math.sign(0)) //0
+    console.log(&apos;5&apos;,Math.sign(5)) //1
+    console.log(&apos;5&apos;,Math.sign(&apos;5&apos;)) //1
+}
+
+/*--数组扩展--*/
+{
+    let arr = Array.of(3,4,7,9,11)
+    console.log(arr)
+}
+{
+    let p = document.querySelectorAll(&apos;p&apos;)
+    let pArr = Array.from(p)
+    pArr.forEach((item)=&gt;{
+        console.log(item.textContent)
+    })
+}
+
+{
+    // 填充数组
+    console.log([1,&apos;a&apos;,undefined].fill(7))
+    console.log([1,&apos;a&apos;,undefined].fill(7,1,3))//fill内参数，第一个为替换的数值，第二和第三为起止位置
+}
+
+{
+    for (let index of [&apos;11&apos;,&apos;22&apos;,&apos;32&apos;].keys()) {
+        console.log(&apos;keys&apos;,index)//返回数组下标
+    }
+    for (let value of [&apos;11&apos;,&apos;22&apos;,&apos;32&apos;].values()) {
+        console.log(&apos;keys&apos;,value)//返回数组内的值
+    }
+    for (let [index,value] of [&apos;11&apos;,&apos;22&apos;,&apos;32&apos;].entries()) {
+        console.log(&apos;keys&apos;,index,value)//返回数组值和下标
+    }
+}
+{
+   console.log([1,2,3,4,5].copyWithin(0,3,4)) //第一个参数起始位置，第二个和第三个是要替换的数值起止位置
+}
+{
+    console.log([1,2,3,4].find((item) =&gt; {
+        return item &gt; 3//只找到符合条件的第一个值
+    }))
+    console.log([1,2,3,4].findIndex((item) =&gt; {
+        return item &gt; 3//只找到符合条件的第一个下标
+    }))
+}
+{
+    console.log([1,2,NaN].includes(1))//类似字符串中的indexOf
+}
+
+/*----函数扩展-----*/
+{
+    function test(x, y = &quot;hello&quot;) {
+        console.log(x, y)
+    }
+    test(&apos;你好&apos;)//如果没有传入y值则默认为‘hello’
+}
+{
+    let x = &apos;test&apos;;
+    function test2(x, y=x) {
+        console.log(x,y)//作用域，在开始已经定义了x值，y=x，y值取函数中的参数值
+    }
+    test2(&apos;world&apos;)
+}
+{
+    function test3(...arg) {
+        for (let v of arg) {
+            console.log(v)//rest参数
+        }
+    }
+    test3(1,2,3,4,&apos;a&apos;)
+}
+{
+    let a = [1,2,3]
+    let b = [4,5,6]
+    console.log([...a,...b])//数组合并
+}
+{
+    let arrow = v =&gt; v*2;
+    console.log(arrow(3))
+}
+{
+    function tail(x){
+        console.log(x)
+    }
+    function fx(x) {
+        return tail(x)//伪调用，提升性能
+    }
+    fx(123)
+}
+/*----对象扩展-----*/
+{
+    let o = 1;//简单表示法
+    let k = 2;
+    let es5 = {
+        o: o,
+        k: k
+    }
+    let es6 = {
+        o,
+        k
+    }
+    console.log(es5,es6)
+    // 对象内函数
+    let es5_methods = {
+        hello: function(){
+            console.log(&quot;hello&quot;)
+        }
+    }
+    let es6_methods = {
+        hello(){
+            console.log(&apos;hello&apos;)
+        }
+    }
+}
+{
+    // 属性表达书
+    let a = &apos;b&apos;;
+    let es5_obj  = {
+        a: &apos;c&apos;
+    }
+    let es6_obj = {
+        [a]: &apos;c&apos;//在es6中的key值是可以变的，可以是一个变量
+    }
+    console.log(es6_obj)
+}
+{
+    // 新增APi
+    console.log(Object.is(&apos;abc&apos;,&apos;abc&apos;),&apos;abc&apos; === &apos;abc&apos;)
+
+    console.log(Object.assign({a:&apos;a&apos;},{b:&apos;b&apos;}))//拷贝，第一个参数是要拷贝的对象上，第二个参数是要拷贝的值
+
+}
+</code></pre><p><code></code></p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="https://github.com/lxy0828" target="_blank">lxy</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+</div>
+
+
+    <div id="comments">
+        
+	<!--PC和WAP自适应版-->
+<div id="SOHUCS"></div>
+<script type="text/javascript">
+	(function(){var appid='cytIl7TuT';var conf='';var width=window.innerWidth||document.documentElement.clientWidth;if(width<960){window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id='+appid+'&conf='+conf+'"><\/script>');}else{var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}
+	c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});}})();
+</script>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    李兴亚
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
